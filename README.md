@@ -51,5 +51,3 @@ Backend development and database integration are currently in progress.
 ## Author
 
 Dhivya S K  
-B.Tech CSE (AI & Robotics)  
-VIT Chennai
