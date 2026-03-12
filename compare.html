@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Compare Perspectives – Continuum</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="frame-layout">
+
+  <!-- NAVIGATION -->
+  <div class="top-frame">
+    <a href="home.html" class="logo">
+      <img src="assets/continuum_logo_w.png">
+      <span>Continuum</span>
+    </a>
+
+    <nav class="nav-center">
+      <a href="explore.html">Explore</a>
+      <a href="write.html">Write</a>
+      <a href="compare.html">Compare</a>
+      <a href="stories.html">My Stories</a>
+    </nav>
+
+    <div class="nav-right">
+      <a href="profile.html">Profile</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="bottom-frame">
+    <div class="container">
+
+      <div class="compare-header">
+        <h2>Compare Perspectives</h2>
+        <p class="soft-text">
+          Choose how many stories you want to read side by side.
+        </p>
+      </div>
+
+      <div class="compare-options">
+        <label>Number of stories</label>
+        <select id="compareCount">
+          <option value="2">2 stories</option>
+          <option value="3">3 stories</option>
+          <option value="4">4 stories</option>
+        </select>
+      </div>
+
+      <h3>Select a story to begin</h3>
+
+      <div class="compare-base-list">
+
+        <div class="story-card">
+          <h4>Harvest Festival</h4>
+          <p class="soft-text">Tamil Nadu · Food · Tradition</p>
+          <button onclick="startCompare('harvest')">
+            Use this story
+          </button>
+        </div>
+
+        <div class="story-card">
+          <h4>Grandmother’s Recipe</h4>
+          <p class="soft-text">Kerala · Food · Memory</p>
+          <button onclick="startCompare('recipe')">
+            Use this story
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function startCompare(storyId) {
+  const count = document.getElementById("compareCount").value;
+  window.location.href =
+    `compare-select.html?base=${storyId}&count=${count}`;
+}
+</script>
+
+</body>
+</html>
+
+
+
+      

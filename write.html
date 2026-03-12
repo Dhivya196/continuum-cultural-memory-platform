@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Write – Continuum</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="frame-layout">
+  <div class="top-frame">
+    <a href="home.html" class="logo">
+  <img src="assets/continuum_logo_w.png" alt="Continuum logo">
+  <span>Continuum</span>
+</a>
+    <nav class="nav-center">
+      <a href="explore.html">Explore</a>
+      <a href="write.html">Write</a>
+      <a href="compare.html">Compare</a>
+      <a href="stories.html">My Stories</a>
+    </nav>
+    <div class="nav-right"><a href="profile.html">Profile</a></div>
+  </div>
+
+  <div class="bottom-frame">
+    <div class="container">
+      <h2>Write a Story</h2>
+      <div class="grid-2">
+        <input placeholder="Story title">
+        <input type="date">
+      </div>
+      <!-- Story Topic -->
+<label>Story topic</label>
+<select id="topicSelect">
+  <option value="">Select a topic</option>
+  <option value="place">Place</option>
+  <option value="food">Food</option>
+  <option value="memory">Memory</option>
+  <option value="story">Story</option>
+</select>
+<!-- Prompt Box -->
+<div id="promptBox" class="prompt-box hidden">
+  <h4>Reflect before you write</h4>
+  <ul id="promptList"></ul>
+</div>
+<br><br>
+ <div class="editor-wrapper">
+  <div id="storyEditor" class="editor" contenteditable="true" oninput="handleEditorInput()"></div>
+</div>
+<br><br>
+<button type="button" class="secondary" onclick="insertInlinePrompts()">
+  Prompt My Memory
+</button>
+
+<br><br>
+     <select id="topicSelect">
+      <option value="">Select tag</option>
+      <option value="place">Place</option>
+      <option value="food">Food</option>
+      <option value="memory">Memory</option>
+      <option value="story">Story</option>
+    </select>
+      <button>Save</button>
+      <button class="secondary">View Story</button>
+    </div>
+  </div>
+</div>
+<script>
+const promptSets = {
+  food: [
+    "Who cooked this dish?",
+    "When did you first taste it?",
+    "Describe the smell and texture.",
+    "Was it tied to a festival or moment?",
+    "Does this food still exist today?"
+  ],
+  place: [
+    "What place did you visit?",
+    "What was the first thing you noticed?",
+    "Describe the sounds around you.",
+    "What smells do you remember?",
+    "How did the place make you feel?"
+  ]
+};
+
+function insertInlinePrompts() {
+  const topic = document.getElementById("topicSelect").value;
+  const editor = document.getElementById("storyEditor");
+
+  if (!topic) {
+    alert("Select a topic first.");
+    return;
+  }
+
+  editor.innerHTML = "";
+
+  promptSets[topic].forEach(prompt => {
+    const p = document.createElement("p");
+    p.className = "prompt";
+    p.textContent = prompt; 
+    p.setAttribute("contenteditable", "false");
+    editor.appendChild(p);
+    const spacer = document.createElement("p");
+    spacer.innerHTML = "<br>";
+    editor.appendChild(spacer);
+  });
+}
+
+function handleEditorInput() {
+  const editor = document.getElementById("storyEditor");
+  const prompts = editor.querySelectorAll(".prompt");
+
+  prompts.forEach(prompt => {
+    const next = prompt.nextElementSibling;
+    if (next && next.textContent.trim().length > 30) {
+      prompt.remove();
+    }
+  });
+}
+</script>
+</body>
+</html>
